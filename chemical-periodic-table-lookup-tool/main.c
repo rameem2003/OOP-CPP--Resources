@@ -6,6 +6,7 @@
  * ####################################################
  */
 #include <stdio.h>
+#include <string.h>
 
 // Design the element data structure
 struct Element
@@ -17,7 +18,7 @@ struct Element
     char electronic_configuration[50];
 };
 
-// store all elements data
+// Store all elements data
 struct Element elements[118] = {
     {1, "H", "Hydrogen", 1.008, "1s1"},
     {2, "He", "Helium", 4.0026, "1s2"},
@@ -138,14 +139,22 @@ struct Element elements[118] = {
     {117, "Ts", "Tennessine", 294, "[Rn] 5f14 6d10 7s2 7p5"},
     {118, "Og", "Oganesson", 294, "[Rn] 5f14 6d10 7s2 7p6"}};
 
+// Function for display the result in console
 void displayAtoms(struct Element element)
 {
-    printf("%s", element.atomName);
+    printf("\n\n\033[1;33m############################################################\033[0m\n");
+    printf("\033[1;33m## Atom Name: %s \033[0m\n", element.atomName);
+    printf("\033[1;33m## Atomic Symbol: %s \033[0m\n", element.atomicSymbol);
+    printf("\033[1;33m## Atomic Number: %d \033[0m\n", element.atomicNumber);
+    printf("\033[1;33m## Atomic Number: %lf \033[0m\n", element.atomicMass);
+    printf("\033[1;33m## Electronic Configuration: %s \033[0m\n", element.electronic_configuration);
+    printf("\033[1;33m############################################################\033[0m\n\n\n\n");
 }
 
+// Function for search specific atom by providing atomic number
 void displayAtomBySearchingAtomicNumber(int userAtomicNumber, struct Element elements[])
 {
-    for (int i = 1; i <= 118; i++)
+    for (int i = 0; i < 118; i++)
     {
         if (elements[i].atomicNumber == userAtomicNumber)
         {
@@ -154,10 +163,79 @@ void displayAtomBySearchingAtomicNumber(int userAtomicNumber, struct Element ele
         }
     }
 
-    printf("Atomic Number of %d is not found", &userAtomicNumber);
+    printf("\033[1;31mAtomic Number of %d is not found\033[0m\n\n", userAtomicNumber);
 }
 
+// Function for search specific atom by providing atomic symbol
+void displayAtomBySearchingAtomicSymbol(char userAtomicSymbol[], struct Element elements[])
+{
+
+    for (int i = 0; i < 118; i++)
+    {
+        if (strcmp(elements[i].atomicSymbol, userAtomicSymbol) == 0)
+        {
+            displayAtoms(elements[i]);
+            return;
+        }
+    }
+
+    printf("\033[1;31mAtomic Symbol of %s is not found\033[0m\n\n", userAtomicSymbol);
+}
+
+// Function for display the initial screen including some options
+void startApp()
+{
+    int option;
+    int atomicNumber;
+    char atomicSymbol[3];
+    printf("\033[1;32m####################################################\033[0m\n");
+    printf("\033[1;32m#######  Chemical Periodic Table Lookup App ########\033[0m\n");
+    printf("\033[1;32m########### Software Version 0.1 Alpha #############\033[0m\n");
+    printf("\033[1;32m############# Software written in C ################\033[0m\n");
+    printf("\033[1;32m####################################################\033[0m\n\n\n");
+
+    printf("You can find your desire Atom by Atomic symbol or Atomic Number\n");
+    printf("Choose your option.........\n");
+    printf("1. Search atom by Atomic Number\n");
+    printf("2. Search atom by Atomic Symbol\n");
+    printf("3. Restart app\n");
+    printf("4. Terminate app\n\n");
+    printf("\033[1;32mEnter your option: \033[0m\t");
+
+    // getting option from the user
+    scanf("%d", &option);
+
+    switch (option)
+    {
+    case 1:
+        printf("Enter Atomic Number: \t");
+        scanf("%d", &atomicNumber);
+        displayAtomBySearchingAtomicNumber(atomicNumber, elements);
+        startApp();
+        break;
+
+    case 2:
+        printf("Enter Atomic Symbol: \t");
+        scanf("%s", &atomicSymbol);
+        displayAtomBySearchingAtomicSymbol(atomicSymbol, elements);
+        startApp();
+        break;
+    case 3:
+        printf("Restarting app.... \n ");
+        startApp();
+        break;
+    case 4:
+        printf("Terminating app.... \n ");
+        return;
+        break;
+
+    default:
+        printf("\033[1;31mInvalid Option, The App is Terminated.... \033[0m\n ");
+        return;
+        break;
+    }
+}
 int main()
 {
-    displayAtomBySearchingAtomicNumber(118, elements);
+    startApp();
 }
