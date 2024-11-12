@@ -7,6 +7,7 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
 
 // Design the element data structure
 struct Element
@@ -142,6 +143,8 @@ struct Element elements[118] = {
 // Function for display the result in console
 void displayAtoms(struct Element element)
 {
+    printf("\033[1;32mSearching......... \033[0m\n\n");
+    Sleep(3000); // Loading Timer For 3 Seconds
     printf("\n\n\033[1;33m############################################################\033[0m\n");
     printf("\033[1;33m## Atom Name: %s \033[0m\n", element.atomName);
     printf("\033[1;33m## Atomic Symbol: %s \033[0m\n", element.atomicSymbol);
@@ -235,6 +238,8 @@ void startApp()
         break;
     }
 }
+
+// main function
 int main()
 {
     startApp();
