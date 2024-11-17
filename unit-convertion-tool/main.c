@@ -74,10 +74,10 @@ void convertWeight()
     double value;
 
     printf("\n\n\033[1;35mYou Choose Weight Conversion:\033[0m\n");
-    printf("\n\033[1;35m1. Grams to Kilograms\033[0m\n");
-    printf("\n\033[1;35m2. Kilograms to Grams\033[0m\n");
-    printf("\n\033[1;35m3. Pounds to Kilograms\033[0m\n");
-    printf("\n\033[1;35m4. Kilograms to Pounds\033[0m\n");
+    printf("\033[1;35m1. Grams to Kilograms\033[0m\n");
+    printf("\033[1;35m2. Kilograms to Grams\033[0m\n");
+    printf("\033[1;35m3. Pounds to Kilograms\033[0m\n");
+    printf("\033[1;35m4. Kilograms to Pounds\033[0m\n");
 
     printf("\033[1;32mEnter your choice (1-4): \033[0m");
     scanf("%d", &choice);
@@ -136,25 +136,41 @@ void convertTemperature()
     int choice;
     double value;
 
-    printf("\nTemperature Conversion:\n");
-    printf("1. Celsius to Fahrenheit\n");
-    printf("2. Fahrenheit to Celsius\n");
+    printf("\n\n\033[1;33mYou Choose Temperature Conversion:\033[0m\n");
+    printf("\033[1;33m1. Celsius to Fahrenheit\033[0m\n");
+    printf("\033[1;33m2. Fahrenheit to Celsius\033[0m\n");
 
-    printf("Enter your choice (1-2): ");
+    printf("\033[1;32mEnter your choice (1-2): \033[0m");
     scanf("%d", &choice);
-    printf("Enter the temperature to convert: ");
+    printf("\033[1;35mEnter the temperature to convert: \033[0m");
     scanf("%lf", &value);
 
     switch (choice)
     {
     case 1:
-        printf("%.2lf Celsius is %.2lf Fahrenheit\n", value, (value * 9 / 5) + 32);
+        printf("\033[1;32mCalculating.........\033[0m");
+        Sleep(3000);
+        printf("\n\n\033[1;33m############################################################\033[0m\n");
+        printf("\033[1;33m###                                                   ###### \033[0m\n");
+        printf("\033[1;33m### %.2lf Celsius is %.2lf Fahrenheit                  \033[0m\n", value, (value * 9 / 5) + 32);
+        printf("\033[1;33m###                                                   ###### \033[0m\n");
+        printf("\033[1;33m############################################################\033[0m\n\n\n\n");
         break;
     case 2:
-        printf("%.2lf Fahrenheit is %.2lf Celsius\n", value, (value - 32) * 5 / 9);
+        printf("\033[1;32mCalculating.........\033[0m");
+        Sleep(3000);
+        printf("\n\n\033[1;33m############################################################\033[0m\n");
+        printf("\033[1;33m###                                                   ###### \033[0m\n");
+        printf("\033[1;33m### %.2lf Fahrenheit is %.2lf Celsius                 \033[0m\n", value, (value - 32) * 5 / 9);
+        printf("\033[1;33m###                                                   ###### \033[0m\n");
+        printf("\033[1;33m############################################################\033[0m\n\n\n\n");
         break;
     default:
-        printf("Invalid choice.\n");
+        printf("\033[1;31m####################################################\033[0m\n");
+        printf("\033[1;31m#####                                          #####\033[0m\n");
+        printf("\033[1;31m#####    Invalid choice. Please try again.     #####\033[0m\n");
+        printf("\033[1;31m#####                                          #####\033[0m\n");
+        printf("\033[1;31m####################################################\033[0m\n\n\n");
     }
 }
 
