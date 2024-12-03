@@ -52,6 +52,6 @@ int main()
     tr.get_value();
     tr.display_triangle_area();
 
-        circle cr(50);
+    circle cr(50);
     cr.display_circle_area();
 }
