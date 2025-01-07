@@ -221,6 +221,9 @@ void deletion_last()
             ptr = ptr->next;
         }
         ptr->prev->next = NULL;
+
+        ptr->next = NULL;
+        ptr->prev = NULL;
         free(ptr);
         printf("\nnode deleted\n");
     }
