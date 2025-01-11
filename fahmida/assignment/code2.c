@@ -6,17 +6,18 @@
 
 int main()
 {
-    int n;
+    int n, i = 1;
     long long sum = 0, formula_result;
 
     // Input the value of n
     printf("Enter the value of n: ");
     scanf("%d", &n);
 
-    // Calculate the sum using iteration
-    for (int i = 1; i <= n; i++)
+    // Calculate the sum of squares using a while loop
+    while (i <= n)
     {
-        sum += i * i;
+        sum += (long long)i * i; // Add square of i to sum
+        i++;
     }
 
     // Calculate the sum using the formula
